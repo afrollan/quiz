@@ -15,7 +15,7 @@ var storage  = process.env.DATABASE_STORAGE;
 // cargar el modelo orm
 var Sequelize = require('sequelize');
 
-// bbdd sqlite
+// bbdd
 var sequelize = new Sequelize(DB_name, user, pwd,	
 	{
 		dialect : dialect,
@@ -36,8 +36,8 @@ exports.Quiz = Quiz;
 sequelize.sync().then(function() {
 	Quiz.count().then(function (count){
 		if (count === 0) {
-			Quiz.create({pregunta: 'Capital de Italia',
-						 respuesta: 'Roma'})
+			Quiz.create({pregunta: 'Capital de Italia', respuesta: 'Roma'});
+			Quiz.create({pregunta: 'Capital de Portugal', respuesta: 'Lisboa'})
 			.then(function(){console.log('Base de datos inicializada')});
 		}
 	});
